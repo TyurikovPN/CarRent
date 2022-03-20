@@ -19,9 +19,19 @@ namespace CarRent
     /// </summary>
     public partial class CustomerWindow : Window
     {
-        public CustomerWindow()
+        public Customer Customer
+        {
+            get; private set;
+        }
+        public CustomerWindow(Customer d)
         {
             InitializeComponent();
+            Customer = d;
+            this.DataContext = Customer;
+        }
+        private void Accept_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CarRent
         public AppContext() => Database.EnsureCreated();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Crews.db");
+            optionsBuilder.UseSqlite("Data Source=CarRentDB.db");
         }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Customer> Customers { get; set; }

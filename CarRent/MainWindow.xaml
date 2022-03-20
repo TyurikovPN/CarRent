@@ -69,6 +69,7 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Cars.RegNumber}">Госномер</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Customers.LastName}">Фамилия клиента</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=TimeRent}">Время аренды, час</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=DateRent}">Дата заказа</GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

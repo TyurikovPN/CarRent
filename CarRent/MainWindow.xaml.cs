@@ -21,6 +21,7 @@ namespace CarRent
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new AppViewModel();
         }
     }
 }

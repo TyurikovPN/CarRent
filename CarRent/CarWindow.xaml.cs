@@ -19,9 +19,16 @@ namespace CarRent
     /// </summary>
     public partial class CarWindow : Window
     {
-        public CarWindow()
+        public Car Car { get; private set; }
+        public CarWindow(Car c)
         {
             InitializeComponent();
+            Car = c;
+            this.DataContext = Car;
+        }
+        private void Accept_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
         }
     }
 }
