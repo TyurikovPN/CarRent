@@ -10,15 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CarRent
 {
-    
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для OrderWindow.xaml
+    /// </summary>
+    public partial class OrderWindow : Window
     {
-        public MainWindow()
+        public OrderWindow()
         {
             InitializeComponent();
         }

@@ -1,0 +1,60 @@
+﻿<Window x:Class="CarRent.OrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarRent"
+        mc:Ignorable="d"
+        Title="Аренда автомобиля" Height="300" Width="400">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="8" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="8" />
+        </Style>
+        <Style TargetType="ListView" >
+            <Setter Property="Margin" Value="8" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=" 0.15*"/>
+            <RowDefinition />
+            <RowDefinition Height=" 0.15*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Машина" />
+        <TextBlock Text="Клиент" Grid.Column ="1" />
+        <TextBlock Text="Время аренды" Grid.Row="2" />
+
+        <ListView x:Name="CarsList" ItemsSource="{Binding Cars}"  Grid.Row ="1">
+            <ListView.View >
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Brand}">Марка</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Model}">Модель</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=RegNumber}">Госномер</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="CustomersList" ItemsSource="{Binding Customers}" Grid.Column="1" Grid.Row="1" >
+            <ListView.View >
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}">Фамилия</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Имя</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=City}">Город</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="TB1" Grid.Row="2" Width=" 100" HorizontalAlignment="Right"/>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+            <Button IsDefault="True" Click="Accept_Click"  MinWidth="60" Margin="5">Сохранить</Button>
+            <Button IsCancel="True" MinWidth="60" Margin="5">Отмена</Button>
+        </StackPanel>
+    </Grid>
+</Window>
