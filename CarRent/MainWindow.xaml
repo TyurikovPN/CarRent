@@ -5,8 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarRent"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Аренда автомобилей" Height="400" Width="500">
     <Grid>
-
+        <TabControl >
+            <TabItem Header=" Машины">
+                <Grid >
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height=" *"></RowDefinition>
+                        <RowDefinition Height=" 30"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name ="CarsGrid" ItemsSource= "{Binding Cars}" SelectionMode="Single">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Brand}">Марка</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Model}">Модель</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=RegNumber}">ГосНомер</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <WrapPanel  HorizontalAlignment="Center" Grid.Row=" 1" >
+                        <Button MinWidth=" 60" Margin=" 5" Content="Редактировать" Command="{Binding CarEditCommand}"
+                                CommandParameter="{Binding ElementName=CarsGrid, Path=SelectedItem}"/>
+                        <Button MinWidth=" 60" Margin="5" Content="Добавить" Command="{Binding CarAddCommand}"/>
+                        <Button MinWidth=" 60" Margin="5"  Content="Удалить" Command="{Binding CarDeleteCommand}"
+                                CommandParameter="{Binding ElementName=CarsGrid, Path=SelectedItem}"/>
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header=" Клиенты">
+                <Grid>
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height=" *"></RowDefinition>
+                        <RowDefinition Height=" 30"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name ="CustomersGrid" ItemsSource= "{Binding Customers}" SelectionMode="Single">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Имя</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}">Фамилия</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=City}">Город проживания</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <WrapPanel  HorizontalAlignment="Center" Grid.Row=" 1" >
+                        <Button MinWidth=" 60" Margin=" 5" Content="Редактировать" Command="{Binding CustomerEditCommand}"
+                                CommandParameter="{Binding ElementName=CustomersGrid, Path=SelectedItem}"/>
+                        <Button MinWidth=" 60" Margin="5" Content="Добавить" Command="{Binding CustomerAddCommand}"/>
+                        <Button MinWidth=" 60" Margin="5"  Content="Удалить" Command="{Binding CustomerDeleteCommand}"
+                                CommandParameter="{Binding ElementName=CustomersGrid, Path=SelectedItem}"/>
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header=" Заказы">
+                <Grid>
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height=" *"></RowDefinition>
+                        <RowDefinition Height=" 30"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name ="OrdersGrid" ItemsSource= "{Binding Orders}" SelectionMode="Single">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Cars.Brand}">Машина</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Cars.RegNumber}">Госномер</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Customers.LastName}">Фамилия клиента</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=TimeRent}">Время аренды, час</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <WrapPanel  HorizontalAlignment="Center" Grid.Row=" 1" >
+                        <Button MinWidth=" 60" Margin=" 5" Content="Редактировать" Command="{Binding OrderEditCommand}"
+                                CommandParameter="{Binding ElementName=OrdersGrid, Path=SelectedItem}"/>
+                        <Button MinWidth=" 60" Margin="5" Content="Добавить" Command="{Binding OrderAddCommand}"/>
+                        <Button MinWidth=" 60" Margin="5"  Content="Удалить" Command="{Binding OrderDeleteCommand}"
+                                CommandParameter="{Binding ElementName=OrdersGrid, Path=SelectedItem}"/>
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
